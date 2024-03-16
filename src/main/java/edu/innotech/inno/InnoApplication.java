@@ -8,5 +8,4 @@ public class InnoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(InnoApplication.class, args);
 	}
-
 }
