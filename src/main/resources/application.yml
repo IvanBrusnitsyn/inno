@@ -1,3 +1,7 @@
 spring:
   main:
     allow-circular-references: true
+
+app:
+    check-product-api-header: true
+    product-api-key: 12345

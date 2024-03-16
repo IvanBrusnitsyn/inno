@@ -1,11 +1,13 @@
-package edu.innotech.inno.web.v1;
+package edu.innotech.inno.web.controller.v1;
 
+import edu.innotech.inno.exception.EntityNotFoundException;
 import edu.innotech.inno.mapper.v1.ProductMapper;
 import edu.innotech.inno.model.Product;
 import edu.innotech.inno.service.ProductService;
 import edu.innotech.inno.web.model.ProductListResponse;
 import edu.innotech.inno.web.model.ProductResponse;
 import edu.innotech.inno.web.model.UpsertProductRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -34,7 +36,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponse> create(@RequestBody UpsertProductRequest request) {
+    public ResponseEntity<ProductResponse> create(@RequestBody @Valid UpsertProductRequest request) {
         Product newProduct = productService.save(productMapper.requestToProduct(request));
 
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -56,4 +58,8 @@ public class ProductController {
 
     }
 
+//    @ExceptionHandler(EntityNotFoundException.class)
+//    public ResponseEntity<Void> notFoundHamdler(EntityNotFoundException ex) {
+//        return ResponseEntity.notFound().build();
+//    }
 }

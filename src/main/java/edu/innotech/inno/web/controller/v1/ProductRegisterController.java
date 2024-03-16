@@ -1,4 +1,4 @@
-package edu.innotech.inno.web.v1;
+package edu.innotech.inno.web.controller.v1;
 
 import edu.innotech.inno.mapper.v1.ProductMapper;
 import edu.innotech.inno.mapper.v1.ProductRegisterMapper;

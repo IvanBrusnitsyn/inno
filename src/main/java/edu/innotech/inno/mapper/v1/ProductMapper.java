@@ -1,14 +1,10 @@
 package edu.innotech.inno.mapper.v1;
 
 import edu.innotech.inno.model.Product;
-import edu.innotech.inno.model.ProductRegister;
 import edu.innotech.inno.web.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +16,7 @@ public class ProductMapper {
     public Product requestToProduct(UpsertProductRequest request) {
         Product product = new Product();
         
-        product.setProductCodId(request.getProductCodId());
+        product.setProductCodeId(request.getProductCodId());
         product.setClientId(request.getClientId());
         product.setType(request.getType());
         product.setNumber(request.getNumber());
@@ -52,7 +48,7 @@ public class ProductMapper {
         ProductResponse productResponse = new ProductResponse();
 
         productResponse.setId(product.getId());
-        productResponse.setProductCodId(product.getProductCodId());
+        productResponse.setProductCodeId(product.getProductCodeId());
         productResponse.setClientId(product.getClientId());
         productResponse.setType(product.getType());
         productResponse.setNumber(product.getNumber());
