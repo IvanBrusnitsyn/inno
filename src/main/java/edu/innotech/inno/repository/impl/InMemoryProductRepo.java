@@ -11,6 +11,7 @@ import edu.innotech.inno.exception.EntityNotFoundException;
 import edu.innotech.inno.utils.BeanUtils;
 import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.text.MessageFormat;
@@ -20,7 +21,8 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-@Repository
+//@Repository
+@Component
 public class InMemoryProductRepo implements ProductRepo {
     private ProductRegisterRepo productRegisterRepo;
 //    private AgreementRepo agreementRepo;

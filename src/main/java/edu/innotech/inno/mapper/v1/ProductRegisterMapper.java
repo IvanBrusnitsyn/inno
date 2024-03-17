@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class ProductRegisterMapper {
-    private final ProductService productService;
+    private final ProductService productServiceImpl; //productService
     public ProductRegister requestToProductRegister(UpsertProductRegisterRequest request) {
         ProductRegister productRegister = new ProductRegister();
 
@@ -23,7 +23,7 @@ public class ProductRegisterMapper {
         productRegister.setCurrencyCode(request.getCurrencyCode());
         productRegister.setState(request.getState());
         productRegister.setAccountNumber(request.getAccountNumber());
-        productRegister.setProductId(productService.findById(request.getProductId()));
+        productRegister.setProductId(productServiceImpl.findById(request.getProductId())); //productService
 
         return productRegister;
     }

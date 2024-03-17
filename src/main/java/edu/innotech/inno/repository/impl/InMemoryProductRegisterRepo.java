@@ -8,6 +8,7 @@ import edu.innotech.inno.repository.ProductRepo;
 import edu.innotech.inno.exception.EntityNotFoundException;
 import edu.innotech.inno.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.text.MessageFormat;
@@ -19,7 +20,8 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Repository
+//@Repository
+@Component
 public class InMemoryProductRegisterRepo implements ProductRegisterRepo {
     private ProductRepo productRepo;
     private final Map<Long, ProductRegister> repository = new ConcurrentHashMap<>();

@@ -1,7 +1,17 @@
 spring:
   main:
     allow-circular-references: true
+  jpa:
+    generate-ddl: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/innotech?useUnicode=yes&characterEncoding=UTF-8
+    username: postgres
+    password: postgres
+    hikari:
+      schema: public
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS public
+      connection-timeout: 10000
 
 app:
-    check-product-api-header: true
+    check-product-api-header: false
     product-api-key: 12345

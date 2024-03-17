@@ -1,8 +1,7 @@
 package edu.innotech.inno.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -14,11 +13,16 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Entity(name = "tpp_product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private BigInteger productCodeId;
     private BigInteger clientId;
     private String type;
+//    @Column(name = "number")
     private String number;
     private BigInteger priority;
     private Instant dateOfConclusion;
@@ -33,7 +37,11 @@ public class Product {
     private BigDecimal taxRate;
     private String reasoneClose;
     private String state;
+
 //    private List<Agreement> agreements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<ProductRegister> productRegisters = new ArrayList<>();
 
 //    public void addAgreement(Agreement agreement) {
@@ -45,10 +53,16 @@ public class Product {
 //    }
 
     public void addProductRegister(ProductRegister productRegister) {
+        if (productRegisters == null) productRegisters = new ArrayList<>();
         productRegisters.add(productRegister);
     }
 
     public void removeProductRegister(Long productRegisterId) {
         productRegisters = productRegisters.stream().filter(a -> !a.getId().equals(productRegisterId)).collect(Collectors.toList());
+    }
+
+    public List<ProductRegister> getProductRegisters() {
+        if (productRegisters == null) productRegisters = new ArrayList<>();
+        return productRegisters;
     }
 }
